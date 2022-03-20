@@ -1,6 +1,5 @@
 from gtts import gTTS
-from io import BytesIO
+import os
+import time
 
-mp3_fp = BytesIO()
-tts = gTTS('hello', lang='en')
-tts.write_to_fp(mp3_fp)
+os.system('gtts-cli "안녕하세요. 저는 gTTS 입니다." --lang ko | mpg123 -')
