@@ -1,18 +1,24 @@
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BCM)
+import TTS
+from TTS import txt_reader
 
-pirPin = 23
+# GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(pirPin, GPIO.IN)
+# pirPin = 23
 
+# GPIO.setup(pirPin, GPIO.IN)
 
-while True:
-    if GPIO.input(pirPin):
-        print("Motion detected!")
+def detecting(pirPin):
+    while True:
+        if GPIO.input(pirPin):
+        # 사람이 2초 이상 감지되면 등으로 조건 추가
+        # 민감도가 너무 높음
+            txt_reader("ment1")
+            return 1
+        else:
+            print("No motion")
+            return 0
 
-    else:
-        print("No motion")
-
-    time.sleep(0.2)
+# GPIO.cleanup()
