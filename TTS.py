@@ -8,5 +8,7 @@ def txt_reader(ment):
 # distance = "20"
 # os.system('gtts-cli "%s 미터 앞에서 우회전입니다." --lang ko | mpg123 -' %distance)
 
-txt_reader("ment2")
+# txt_reader("ment2")
 
+if __name__ == "__main__":
+    print("TTS 입니다.")
