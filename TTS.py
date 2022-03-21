@@ -1,5 +1,12 @@
 from gtts import gTTS
 import os
-import time
 
-os.system('gtts-cli "안녕하세요. 저는 gTTS 입니다." --lang ko | mpg123 -')
+def txt_reader(ment):
+    f = open("./"+ment+".txt", 'r')
+    f = f.read()
+    os.system('gtts-cli \"'+f+'\" --lang ko | mpg123 -')
+# distance = "20"
+# os.system('gtts-cli "%s 미터 앞에서 우회전입니다." --lang ko | mpg123 -' %distance)
+
+txt_reader("ment2")
+
