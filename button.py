@@ -1,28 +1,45 @@
 import RPi.GPIO as GPIO
 import time
 
+from TTS import dest_reader
+from TTS import txt_reader
+
 GPIO.setmode(GPIO.BCM)
 
-StartPin = 5
-DestiPin = 17
+Start_Pin = 5
+Desti1_Pin = 17     # library -> 1
+Desti2_Pin = 24     # music   -> 2
 
-GPIO.setup(StartPin, GPIO.IN)
-GPIO.setup(DestiPin, GPIO.IN)
+GPIO.setup(Start_Pin, GPIO.IN)
+GPIO.setup(Desti1_Pin, GPIO.IN)
+GPIO.setup(Desti2_Pin, GPIO.IN)
 
 def detect_start():
+    start_time = time.time()
+
     while True:
-        if GPIO.input(StartPin) == 0:
+        if time.time() - start_time > 60:   # 1분 이상 버튼을 안누르면
+            return 0
+        if GPIO.input(Start_Pin) == 0:
             print("시작 버튼 눌림")
             return 1
         else:
-            print("point1")
+            print("--시작 버튼 감지 파트--")
             time.sleep(0.2)
 
 def set_destination():
     while True:
-        if GPIO.input(DestiPin) == 0:
-            print("목적지 버튼 눌림")
-            return 1
+        if GPIO.input(Desti1_Pin) == 0:
+            print("도서관 버튼 눌림")
+            dest_reader(1)
+            txt_reader("ment3")     # 없어도 됨
+            return 1   
+        elif GPIO.input(Desti2_Pin) == 0:
+            print("음악실 버튼 눌림")
+            dest_reader(2)
+            txt_reader("ment3")     # 없어도 됨
+            return 2
         else:
-            print("point2")
+            print("--목적지 선택 파트--")
             time.sleep(0.2)
+
