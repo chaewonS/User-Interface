@@ -11,16 +11,16 @@ out = 25
 range = 8
 
 GPIO.setup(out, GPIO.IN)
-GPIO.setup(range, GPIO.OUT)
+GPIO.setup(range, GPIO.OUT) 
 
 # range pin
 # 1m - False / 3m - True
 GPIO.output(range, False)
 
-while True:
-    ADCValue = GPIO.input(out)
-    print(ADCValue)
-    time.sleep(0.2)
+def ultrasound_sensing():
+    while True:
+        if GPIO.input(out) == 0:
+            return 0
 
 # 출력
 # 감지 - 0 / 미감지 - 1

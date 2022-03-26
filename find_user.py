@@ -11,7 +11,7 @@ from button import *
 
 # GPIO.setup(pirPin, GPIO.IN)
 
-def detecting(pirPin):
+def detecting_people(pirPin):
     while True:
         # 사람이 2초 이상 감지되면 등으로 조건 추가
         # 감도가 너무 높음
