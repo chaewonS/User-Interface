@@ -12,6 +12,7 @@ def path_reader(ment):
     os.system('gtts-cli "%s 미터 앞에서 우회전입니다." --lang ko | mpg123 -' %distance)
 
 
+# 조사 문제로 멘트 직접 입력 했음
 def dest_reader(ment):
     if ment == 1:
         os.system('gtts-cli "목적지를 도서관으로 설정하셨습니다." --lang ko | mpg123 -')
